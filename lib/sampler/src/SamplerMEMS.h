@@ -16,6 +16,6 @@ public:
         i2s_port_t i2s_port,
         i2s_pin_config_t &i2s_pins,
         i2s_config_t i2s_config,
-        bool fixSPH0645 = false);
+        bool fixSPH0645 = true);
     virtual int read(int16_t *samples, int count);
 };
