@@ -3,15 +3,23 @@
 #include <ESPmDNS.h>
 #include "parameters.h"
 #include "communication.h"
+#include "wifi_save.h"
 
 // const char* ssid = "LiSpire1";        //Write your own Wi-Fi name here
 // const char* password = "aaaaa11111";  //Write your own password here
 void setup()
 {
   Serial.begin(115200);
-  Serial.println("Starting up");
+  Serial.println("Starting up");  //192.168.4.1
   delay(1000);
-  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+  if (wifi_set_main())
+  {
+      Serial.println("Connect WIFI SUCCESS");
+  }
+  else
+  {
+      Serial.println("Connect WIFI FAULT");
+  }
   while (WiFi.status() != WL_CONNECTED)
   {
     delay(500);
